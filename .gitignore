@@ -166,3 +166,9 @@ ReacherMulti/**
 !ReacherMulti/.gitkeep
 ReacherOne/**
 !ReacherOne/.gitkeep
+*.log
+
+# Agents
+agents/**
+wandb/
+!agents/.gitkeep
