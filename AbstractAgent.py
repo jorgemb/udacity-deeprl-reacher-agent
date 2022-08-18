@@ -71,30 +71,36 @@ class AbstractAgent:
         """
         pass
 
-    @abstractmethod
     def __getstate__(self):
         """Return a state for pickling
         """
-        pass
+        state = self.__dict__.copy()
+        return state
 
-    @abstractmethod
     def __setstate__(self, state):
         """Restores the instance attributes from a state
 
         Args:
             state (dict): Dictionary of elements
         """
-        pass
+        self.__dict__.update(state)
 
     def agent_name(self):
         return self.__class__.__name__
 
 
 class RandomAgent(AbstractAgent):
-    """ Basic random agent
-    """
     def __init__(self, state_size, action_size, *, gamma=1, alpha=0.1, seed=-1, **kwargs) -> None:
         super().__init__(state_size, action_size, gamma=gamma, alpha=alpha, seed=seed, **kwargs)
-    
-    def step(self, reward, state, learn=True):
+
+    def random_action(self):
         return np.random.uniform(-1, 1, self.action_size)
+
+    def start(self, state):
+        return self.random_action()
+
+    def end(self, reward):
+        pass
+
+    def step(self, reward, state, learn=True):
+        return self.random_action()
