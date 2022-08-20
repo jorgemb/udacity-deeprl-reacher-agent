@@ -50,12 +50,12 @@ class AbstractAgent:
         pass
 
     @abstractmethod
-    def step(self, reward, state, learn=True):
+    def step(self, state, reward, learn=True):
         """Performs a step in the simulation, provides the reward of the last action and the next state.
 
         Args:
-            reward (float): Reward from previous action
             state (array_like): New state
+            reward (float): Reward from previous action
 
         Returns:
             int: Next action

@@ -90,7 +90,7 @@ def do_episode(environment, agent):
         episode_score += reward
         state = env_info.vector_observations[0]
 
-        next_action = agent.step(reward, state)
+        next_action = agent.step(state, reward)
 
         # Perform action
         env_info = environment.step(next_action)[brain_name]

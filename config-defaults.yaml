@@ -1,7 +1,7 @@
 # Default configuration to use for experiment tracking with Weights and Biases
 episodes:
   desc: Number of episodes to run per agent
-  value: 1
+  value: 10
 avg_window:
   desc: Window of running average to use when showing the final graph
   value: 100
