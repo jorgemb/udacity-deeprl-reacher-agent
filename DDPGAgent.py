@@ -30,7 +30,7 @@ class Actor(nn.Module):
             fc2_units (int): Number of nodes in second hidden layer
         """
         super(Actor, self).__init__()
-        self.seed = torch.manual_seed(seed)
+        # self.seed = torch.manual_seed(seed)
         self.fc1 = nn.Linear(state_size, fc_units)
         self.fc2 = nn.Linear(fc_units, action_size)
         self.reset_parameters()
@@ -59,7 +59,7 @@ class Critic(nn.Module):
             fc2_units (int): Number of nodes in the second hidden layer
         """
         super(Critic, self).__init__()
-        self.seed = torch.manual_seed(seed)
+        # self.seed = torch.manual_seed(seed)
         self.fcs1 = nn.Linear(state_size, fcs1_units)
         self.fc2 = nn.Linear(fcs1_units + action_size, fc2_units)
         self.fc3 = nn.Linear(fc2_units, fc3_units)

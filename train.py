@@ -30,7 +30,7 @@ def create_agent(state_space, action_space, **kwargs):
         raise f'Unkown agent: {agent_name}'
 
 
-def do_experiment(environment, agent: AbstractAgent, total_episodes: int, print_every: int):
+def do_experiment(environment, brain_name, agent: AbstractAgent, total_episodes: int, print_every: int):
     """Performs an experiment on the given agent.
 
     Args:
@@ -47,7 +47,7 @@ def do_experiment(environment, agent: AbstractAgent, total_episodes: int, print_
 
     for i in range(total_episodes):
         start_time = time.time()
-        scores[i] = do_episode(environment, agent)
+        scores[i] = do_episode(environment, brain_name, agent)
         times[i] = time.time() - start_time
 
         # Log data
@@ -59,12 +59,12 @@ def do_experiment(environment, agent: AbstractAgent, total_episodes: int, print_
         })
 
         if ep % print_every == 0:
-            print(f"{agent.agent_name()} :: ({ep}/{total_episodes}) AVG {np.average(scores[max(0, i - print_every):])}")
+            print(f"{agent.agent_name()} :: ({ep}/{total_episodes}) AVG {np.average(scores[max(0, i - print_every):ep])}")
 
     return scores, times
 
 
-def do_episode(environment, agent):
+def do_episode(environment, brain_name, agent, learn=True):
     """Performs a single episode using the given environment and agent
 
     Args:
@@ -90,7 +90,7 @@ def do_episode(environment, agent):
         episode_score += reward
         state = env_info.vector_observations[0]
 
-        next_action = agent.step(state, reward)
+        next_action = agent.step(state, reward, learn=learn)
 
         # Perform action
         env_info = environment.step(next_action)[brain_name]
@@ -119,7 +119,7 @@ if __name__ == '__main__':
         print_every = 100
 
         agent = create_agent(state_space, action_space, **wandb.config)
-        scores, _ = do_experiment(env, agent, episodes, print_every)
+        scores, _ = do_experiment(env, brain_name, agent, episodes, print_every)
         agent_name = agent.agent_name()
 
         # Print scores
