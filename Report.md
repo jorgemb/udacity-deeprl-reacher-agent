@@ -77,6 +77,19 @@ to the formula:
 
 $$ target = \tau local + (1-\tau)target $$
 
+### Networks
+
+The actor network has as input a state and as output an action. The 
+used network was:
+
+![Actor neural network](img/actor-network.png)
+
+The critic network has as input a state and an action, and returs
+a single value that represents the Q-value. The used network
+was:
+
+![Critic neural network](img/critic-network.png)
+
 ## Training
 
 Training was performed using the Unity ML environment for Banana pickup, there are two bananas: blue and yellow. The environment
