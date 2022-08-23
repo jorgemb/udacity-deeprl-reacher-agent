@@ -76,7 +76,7 @@ select `Continuous_Control.ipynb` to see the results.
 
 Here you can watch the video of the best agent:
 
-<!-- [![Best agent video](https://i.ytimg.com/vi/-AJxLCeJHfU/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBhGU3enYTMX8lgEZWB5Wn0UdJ7XQ)](https://youtu.be/-AJxLCeJHfU) -->
+[![Best agent video](https://i9.ytimg.com/vi_webp/HmAkRJAd8BQ/mqdefault.webp?v=63047856&sqp=CKD_kZgG&rs=AOn4CLCR_DQVfm8cLu1ntpJKkk1T0Fm1Cw)](https://youtu.be/HmAkRJAd8BQ)
 
 ## Training the agent
 
